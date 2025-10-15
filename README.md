@@ -2,49 +2,38 @@
 # Multi-Queue Round-Robin Café (Interactive CLI)
 
 ## How to run
+1. Make sure these three files are in the same folder:
+   - scheduler.py  
+   - parser.py  
+   - cli.py  
 
-(Insert directions to run your program here.)
+2. Open the terminal in that folder and run:
 
 
 ## How to run tests locally
-(Insert directions to run your tests here.)
+If you want to test your code, run this in the terminal:
+pytest
+
+Or if you have a file with commands (for example, `sample_input.txt`), run:
+
 
 
 ## Complexity Notes
 Briefly justify:
 
-- Your queue design (e.g., circular buffer).
+- Queue Design:
+I used a circular buffer for the queue.
+It stores items in a fixed-size list and moves the front and rear using modular arithmetic.
+This makes adding and removing tasks very fast and does not use deque or queue.Queue.
 
-- Time complexity: enqueue, dequeue amortized O(1); run is O(#turns + total_minutes_worked).
+Time Complexity:
 
-- Space complexity: O(N) tasks + metadata.
+enqueue → O(1)
 
+dequeue → O(1)
 
-## **Delete this section before submission.**
-### Common pitfalls
-- Display should print after each RUN turn only.
+run → O(number of turns + total work time)
 
-- Don’t advance time on empty or skipped queues.
+Space Complexity:
 
-- Enforce 1 ≤ steps ≤ #queues for RUN.
-
-- Auto task IDs per queue: <queue_id>-NNN (zero-padded).
-
-- Use exact messages:
-
-    - Sorry, we're at capacity.
-
-    - Sorry, we don't serve that.
-
-
-### Grading rubric (I will be using this to grade your submission)
-
-**__Correctness (50):__** RR behavior, logs, display-per-turn, auto task ids, menu handling, rejects.
-
-**__Complexity notes (15):__** correct, concise, justified.
-
-**__Student tests (15):__** ≥4 targeted, deterministic tests incl. steps validation.
-
-**__Code quality (10):__** structure, type hints on public surfaces, docstrings, PEP 8.
-
-**__Docs & UX (10):__** README completeness; exact messages; clear CLI.
+O(N) where N is the total number of tasks plus small extra data.
