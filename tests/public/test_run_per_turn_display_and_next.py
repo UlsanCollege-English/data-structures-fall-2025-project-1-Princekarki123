@@ -1,3 +1,5 @@
+import os, sys
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "../../src")))
 from scheduler import Scheduler
 
 def _has_run_on_queue(logs, qid):
@@ -22,3 +24,4 @@ def test_run_two_turns_and_progress_time():
 
     # There should be at least one work/finish line in total
     assert any("event=work" in l or "event=finish" in l for l in logs)
+

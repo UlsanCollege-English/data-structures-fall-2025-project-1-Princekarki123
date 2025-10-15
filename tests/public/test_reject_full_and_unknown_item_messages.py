@@ -1,3 +1,5 @@
+import os, sys
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "../../src")))
 from scheduler import Scheduler
 
 def test_unknown_item_reject_and_message(capsys):
